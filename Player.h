@@ -22,7 +22,7 @@ public:
   virtual void Mozzo(int, int) =0;
   virtual void Print() =0;
   virtual void Attack(Player *) =0;
-  virtual void Sunk(int, int) =0;
+  virtual bool Sunk(int, int) =0;
   virtual void Riempimento() =0;
   virtual int getContatore() const =0;
 
@@ -50,7 +50,7 @@ class Human: public Player
     void Mozzo(int, int);
     void Print();
     void Attack(Player *);
-    void Sunk(int, int);
+    bool Sunk(int, int);
     void Riempimento();
     int getContatore() const;
 
@@ -66,7 +66,7 @@ public:
   void Mozzo(int, int);
   void Print();
   void Attack(Player *);
-  void Sunk(int, int);
+  bool Sunk(int, int);
   void Riempimento();
   int getContatore() const;
 

@@ -198,7 +198,7 @@ void Human::Attack(Player * Other) //dichiara un attacco
 }
 
 //Eliminiamo Player::Hit e mettiamo direttamente il for in Attack?
-void Human::Sunk(int x, int y) // Dichiara se l'attacco ha Affondato una nave
+bool Human::Sunk(int x, int y) // Dichiara se l'attacco ha Affondato una nave
 {
   Coordinate A(x,y);
   for (int i = 0; i < _n; i++)
@@ -221,8 +221,10 @@ void Human::Sunk(int x, int y) // Dichiara se l'attacco ha Affondato una nave
         }
       }
       _contatore--;
+      return true;
     }
   }
+  return false;
 }
 
 
@@ -370,35 +372,44 @@ Coordinate Bot::random()
 
 void Bot::Attack(Player * Other) //dichiara un attacco
 {
-  Coordinate A = random();
 
   if(!this->targetAcquired){
-    //do{
     Coordinate A = random();
     this->target = A;
-    // }(while !check(target));
-    // bool hit = Hit(target);
-    // if(hit){
-    //   bool targetAcquired=true;
-    //   firstStrike = target;
-    //   int i = random(0,3);
-    //
-    // }
+  }
+
+  if(this->targetAcquired){
+    Coordinate A = random();
+    this->target = A;
   }
 
   int x = A.getX();
   int y = A.getY();
+
   if (!_Screen.getRadar(x,y))
   {
     std::cout << "Quadrante già colpito" << '\n';
     Attack(Other);
-  }else
+
+  }
+  else
   {
-    Other->_Plancia.setRadar(x,y); //Possibilità di fare overload di setradar per non prendere necessariamente flotta
-    Other->Sunk(x,y);
+    if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
+     this->targetAcquired=true;
+     this->firstStrike = A;
+    }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
+
+
+    if(Other->Sunk(x,y))
+    {
+      this->targetAcquired=false;
+    };
+
+
     //Spostiamo Other._Plancia.setRadar in Hit()?
-    if(_Screen.setRadar(x,y,Other->_Plancia[y][x]))
-      colpi_a_segno++;
+    Other->_Plancia.setRadar(x,y);
+
+    colpi_a_segno++;
     colpi_sparati++;
   }
 }
@@ -406,7 +417,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 
 
 
-void Bot::Sunk(int x, int y) // Dichiara se l'attacco ha Affondato una nave
+bool Bot::Sunk(int x, int y) // Dichiara se l'attacco ha Affondato una nave
 {
   Coordinate A(x,y);
   for (int i = 0; i < _n; i++)
@@ -429,9 +440,12 @@ void Bot::Sunk(int x, int y) // Dichiara se l'attacco ha Affondato una nave
         }
       }
       _contatore--;
+      return true;
     }
   }
+  return false;
 }
+
 
 
 int Bot::getContatore() const //restituisce il numero delle navi sopravvissute
