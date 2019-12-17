@@ -399,6 +399,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
       Other->Sunk(x,y);
 
   }
+}
 
   if(this->targetAcquired){
     A = random();
