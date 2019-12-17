@@ -13,6 +13,8 @@ int main()
   // Player Andrea;
   // Player Daniel;
   Game partita;
+
+
   if(partita.Generate())
   {
     if(partita.Start())
