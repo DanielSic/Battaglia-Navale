@@ -373,6 +373,7 @@ Coordinate Bot::random()
 void Bot::Attack(Player * Other) //dichiara un attacco
 {
   Coordinate A;
+
   if(!this->targetAcquired){
     Coordinate A = random();
     this->target = A;
@@ -390,9 +391,10 @@ void Bot::Attack(Player * Other) //dichiara un attacco
   {
     std::cout << "Quadrante già colpito" << '\n';
     Attack(Other);
-
   }
+
   else
+
   {
     if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
      this->targetAcquired=true;
