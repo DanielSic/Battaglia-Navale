@@ -76,8 +76,8 @@ bool Game::Start() //contiene il game loop
 void Game::Endgame()//ancora niente
 {
   std::cout << "Conygratulazioni! Ecco alcune statistiche sulla vostra partita:\n"<< '\n';
-  _player1.Stats();
-  _player2.Stats();
+  &_player1->Stats();
+  &_player2->Stats();
 
   std::cout << "Grazie per avere giocato al nostro gioco!" << '\n';
   std::cout << "Autori (in ordine di altezza): \n\tDamiano Cabiati\n\tAndrea Sibona\n\tDaniel Siciliano" << '\n';
