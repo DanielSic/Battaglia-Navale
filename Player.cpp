@@ -372,10 +372,10 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 {
   Coordinate A = random();
 
-  if(!this.targetAcquired){
-    do{
+  if(!this->targetAcquired){
+    //do{
     Coordinate A = random();
-    this.target = A;
+    this->target = A;
     // }(while !check(target));
     // bool hit = Hit(target);
     // if(hit){
