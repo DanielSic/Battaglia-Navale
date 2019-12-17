@@ -54,7 +54,6 @@ class Human: public Player
     void Riempimento();
     int getContatore() const;
 
-    void Stats();
 
 };
 
@@ -70,7 +69,7 @@ public:
   void Sunk(int, int);
   void Riempimento();
   int getContatore() const;
-  void Stats();
+
 
 private:
   Coordinate target;

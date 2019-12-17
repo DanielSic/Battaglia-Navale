@@ -333,6 +333,57 @@ Nave Bot::setShips(int len, Coordinate coord){ //crea e pone le navi
     return setShips(len,coord);
 }
 
+void Bot::Mozzo(int i, int lunghezza) //chiede le coordinate delle navi da creare
+{
+  Coordinate A;
+  if(A.getFromPlayer())
+  {
+    _navi[i] = setShips(lunghezza, A);
+    Print();
+
+  }else
+  {
+    std::cout << "Qualcosa è andato storto in Mozzo!" << '\n';
+  }
+
+}
+
+void Bot::Print() //stampa lo schermo di un giocatore
+{
+  std::cout << "\n\t\t\tCampo nemico\n\n";
+  _Screen.PrintRadar();
+  std::cout << "\n\t\t\tLa tua Flotta\n\n";
+  _Plancia.PrintFlotta();
+
+}
+
+void Bot::Attack(Player * Other) //dichiara un attacco
+{
+  Coordinate A;
+
+  if(!A.getFromPlayer())
+  {
+    std::cout << "Coordinate fuori range \n";
+    Attack(Other);
+  }
+
+  int x = A.getX();
+  int y = A.getY();
+  if (!_Screen.getRadar(x,y))
+  {
+    std::cout << "Quadrante già colpito" << '\n';
+    Attack(Other);
+  }else
+  {
+    Other->_Plancia.setRadar(x,y); //Possibilità di fare overload di setradar per non prendere necessariamente flotta
+    Other->Sunk(x,y);
+    //Spostiamo Other._Plancia.setRadar in Hit()?
+    if(_Screen.setRadar(x,y,Other->_Plancia[y][x]))
+      colpi_a_segno++;
+    colpi_sparati++;
+  }
+}
+
 Coordinate Bot::random()
 {
 
