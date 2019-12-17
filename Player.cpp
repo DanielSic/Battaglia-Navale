@@ -372,11 +372,19 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 {
   Coordinate A = random();
 
-  // if(!A.getFromPlayer())
-  // {
-  //   std::cout << "Coordinate fuori range \n";
-  //   Attack(Other);
-  // }
+  if(!this.targetAcquired){
+    do{
+    Coordinate A = random();
+    this.target = A;
+    // }(while !check(target));
+    // bool hit = Hit(target);
+    // if(hit){
+    //   bool targetAcquired=true;
+    //   firstStrike = target;
+    //   int i = random(0,3);
+    //
+    // }
+  }
 
   int x = A.getX();
   int y = A.getY();
