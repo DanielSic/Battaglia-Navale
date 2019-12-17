@@ -359,13 +359,13 @@ void Bot::Print() //stampa lo schermo di un giocatore
 
 void Bot::Attack(Player * Other) //dichiara un attacco
 {
-  Coordinate A;
+  Coordinate A = Bot.random();
 
-  if(!A.getFromPlayer())
-  {
-    std::cout << "Coordinate fuori range \n";
-    Attack(Other);
-  }
+  // if(!A.getFromPlayer())
+  // {
+  //   std::cout << "Coordinate fuori range \n";
+  //   Attack(Other);
+  // }
 
   int x = A.getX();
   int y = A.getY();
