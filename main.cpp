@@ -13,6 +13,14 @@ int main()
   // Player Andrea;
   // Player Daniel;
   Game partita;
+
+  _player2.random().print();
+  _player2.random().print();
+  _player2.random().print();
+  _player2.random().print();
+  _player2.random().print();
+  _player2.random().print();
+
   if(partita.Generate())
   {
     if(partita.Start())
