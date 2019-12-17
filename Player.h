@@ -16,6 +16,7 @@ public:
   Player();
   bool Check(Coordinate, Coordinate);
   std::string getName();
+  void Stats();
 
   virtual Nave setShips(int, Coordinate) =0;
   virtual void Mozzo(int, int) =0;
@@ -25,7 +26,6 @@ public:
   virtual void Riempimento() =0;
   virtual int getContatore() const =0;
 
-  void Stats();
 
 protected:
   Tabella _Screen;
