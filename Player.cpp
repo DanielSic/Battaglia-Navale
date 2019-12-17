@@ -377,36 +377,52 @@ void Bot::Attack(Player * Other) //dichiara un attacco
   if(!this->targetAcquired){
     A = random();
     this->target = A;
+
+    int x = A.getX();
+    int y = A.getY();
+
+    if (!_Screen.getRadar(x,y))
+    {
+      std::cout << "Quadrante già colpito" << '\n';
+      Attack(Other);
+    }
+
+    else
+
+    {
+      if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
+       this->targetAcquired=true;
+       this->firstStrike = A;
+      }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
+
+
+      Other->Sunk(x,y);
+
   }
 
   if(this->targetAcquired){
     A = random();
     this->target = A;
-  }
 
-  int x = A.getX();
-  int y = A.getY();
+    int x = A.getX();
+    int y = A.getY();
 
-  if (!_Screen.getRadar(x,y))
-  {
-    std::cout << "Quadrante già colpito" << '\n';
-    Attack(Other);
-  }
-
-  else
-
-  {
-    if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
-     this->targetAcquired=true;
-     this->firstStrike = A;
-    }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
-
-
-    if(Other->Sunk(x,y))
+    if (!_Screen.getRadar(x,y))
     {
-      this->targetAcquired=false;
-    };
+      std::cout << "Quadrante già colpito" << '\n';
+      Attack(Other);
+    }
 
+    else
+
+    {
+      _Screen.setRadar(x,y,Other->_Plancia[y][x]);
+
+      if(Other->Sunk(x,y))
+      {
+        this->targetAcquired=false;
+      };
+  }
 
     //Spostiamo Other._Plancia.setRadar in Hit()?
     Other->_Plancia.setRadar(x,y);
