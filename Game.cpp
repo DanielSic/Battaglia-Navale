@@ -9,12 +9,7 @@
 
 
 Game::Game(){
-  _player2.random().print();
-  _player2.random().print();
-  _player2.random().print();
-  _player2.random().print();
-  _player2.random().print();
-  _player2.random().print();
+
 
   std::cout << """\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBenvenuto! Questo è un gioco di battaglia navale per due giocatori. \n Una volta inseriti i vostri nomi, il primo giocatore inserirà le 5 navi a sua disposizione, seguirà poi il turno del giocatore 2.\nSi susseguiranno poi i rispettivi turni di attacco. Scopo del gioco è annientare la flotta nemica. \nSulla parte alta dell schermo apparirà la plancia di gioco con le proprie navi e i punti in cui l'avversario ha sparato.\nSotto avrete invece il radar, ad indicarvi dove i vostri colpi siano andati a segno o meno.\n\n\t\t\t\t\t\t\t\t \033[43;1;5m Buona Partita \033[0m \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n""" << '\n';
 
@@ -22,6 +17,12 @@ Game::Game(){
 
 bool Game::Generate() //genera il nome dei giocatori e le loro plancie
 {
+  _player2.random().print();
+  _player2.random().print();
+  _player2.random().print();
+  _player2.random().print();
+  _player2.random().print();
+  _player2.random().print();
   std::string nome;
   std::cout << "Giocatore 1 inserisci il tuo nome... " << '\n';
   std::cin >> nome;
