@@ -357,9 +357,20 @@ void Bot::Print() //stampa lo schermo di un giocatore
 
 }
 
+Coordinate Bot::random()
+{
+
+  int x = rand()%10;
+  int y = rand()%10;
+  Coordinate coord = Coordinate(x,y);
+
+  return coord;
+
+}
+
 void Bot::Attack(Player * Other) //dichiara un attacco
 {
-  Coordinate A = Bot.random();
+  Coordinate A = this.random();
 
   // if(!A.getFromPlayer())
   // {
@@ -384,16 +395,6 @@ void Bot::Attack(Player * Other) //dichiara un attacco
   }
 }
 
-Coordinate Bot::random()
-{
-
-  int x = rand()%10;
-  int y = rand()%10;
-  Coordinate coord = Coordinate(x,y);
-
-  return coord;
-
-}
 
 
 
