@@ -372,7 +372,7 @@ Coordinate Bot::random()
 
 void Bot::Attack(Player * Other) //dichiara un attacco
 {
-
+  Coordinate A;
   if(!this->targetAcquired){
     Coordinate A = random();
     this->target = A;
