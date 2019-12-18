@@ -374,7 +374,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 {
   Coordinate A;
   int i;
-
+  std::cout<< " target acquired: " << this->targetAcquired << "\n";
   // "target not acquired"
   if(!this->targetAcquired){
     A = random();
@@ -405,6 +405,9 @@ void Bot::Attack(Player * Other) //dichiara un attacco
   }
 }
 
+else
+
+{
 // "target acquired"
   if(this->targetAcquired){
 
@@ -459,8 +462,8 @@ void Bot::Attack(Player * Other) //dichiara un attacco
     //Spostiamo Other._Plancia.setRadar in Hit()?
 
   }
+ }
 }
-
 
 
 
