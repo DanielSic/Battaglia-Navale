@@ -420,6 +420,9 @@ else
     if (!_Screen.getRadar(x,y))
     {
       std::cout << "Quadrante già colpito" << '\n';
+      this->target=this->firstStrike;
+      std::cout << "speriamo bene" << "\n";
+      this->i = (i+2)%4;
       Attack(Other);
     }
 
