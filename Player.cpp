@@ -428,11 +428,11 @@ void Bot::Attack(Player * Other) //dichiara un attacco
       }
       else
       {
-        if(this->target==this->fistStrike){
+        if(this->target==this->firstStrike){
           i = (i+1)%4;
         }
-        if(this->target!=this->fistStrike){
-          this->target=this->fistStrike;
+        if(this->target!=this->firstStrike){
+          this->target=this->firstStrike;
           i = (i+2)%4;
         }
 
