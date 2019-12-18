@@ -421,7 +421,7 @@ else
     {
       std::cout << "Quadrante già colpito" << '\n';
       this->target=this->firstStrike;
-      std::cout << "speriamo bene" << "\n";
+      std::cout << "i= " << i << " A: " << A.print() << "\n";
       this->i = (i+2)%4;
       Attack(Other);
     }
