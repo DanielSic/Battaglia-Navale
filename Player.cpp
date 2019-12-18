@@ -389,7 +389,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 
     if (!_Screen.getRadar(x,y))
     {
-      std::cout << "Quadrante già colpito" << '\n';
+      std::cout << "Quadrante già colpito -" << '\n';
       Attack(Other);
     }
 
@@ -445,6 +445,8 @@ else
       }
 
       //this->target=this->firstStrike;
+
+      std::cout << "attack other 450" << "\n";
       Attack(Other);
     }
 
