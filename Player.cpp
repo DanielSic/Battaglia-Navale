@@ -373,6 +373,7 @@ Coordinate Bot::random()
 void Bot::Attack(Player * Other) //dichiara un attacco
 {
   Coordinate A;
+  int i;
 
   if(!this->targetAcquired){
     A = random();
@@ -393,7 +394,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
       if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
        this->targetAcquired=true;
        this->firstStrike = A;
-       int i = rand()%4;
+       i = rand()%4;
       }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
 
 
@@ -428,11 +429,11 @@ void Bot::Attack(Player * Other) //dichiara un attacco
       else
       {
         if(this->target==this->fistStrike){
-          i =(i+1)%4;
+          i = (i+1)%4;
         }
         if(this->target!=this->fistStrike){
           this->target=this->fistStrike;
-          i=(i+2)%4;
+          i = (i+2)%4;
         }
 
       }
