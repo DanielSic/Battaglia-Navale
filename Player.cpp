@@ -376,6 +376,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
   std::cout<< " target acquired: " << this->targetAcquired << "\n";
   // "target not acquired"
   if(!this->targetAcquired){
+    srand(time(NULL));
     A = random();
     this->target = A;
 
