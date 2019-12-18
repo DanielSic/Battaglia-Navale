@@ -407,6 +407,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 
 // "target acquired"
   if(this->targetAcquired){
+
     this->isAcquired = this->target+this->targetDirection[i];
     A=this->isAcquired;
 
@@ -423,32 +424,39 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 
     {
       if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
+        std::cout << "screen setRadar" << "\n";
+
        this->target = this->isAcquired;
        colpi_a_segno++;
        if(Other->Sunk(x,y))
        {
          this->targetAcquired=false;
+         std::cout << "sunk" << "\n";
        };
       }
       else
       {
         if(this->target==this->firstStrike){
+          std::cout << "target == firstStrike" << "\n";
           i = (i+1)%4;
         }
         if(this->target!=this->firstStrike){
           this->target=this->firstStrike;
+          std::cout << "target != firstStrike" << "\n";
+
           i = (i+2)%4;
         }
 
       }
 
       Other->_Plancia.setRadar(x,y);
+      std::cout << "plancia setradar" << "\n";
+      colpi_sparati++;
 
 
   }
 
     //Spostiamo Other._Plancia.setRadar in Hit()?
-    colpi_sparati++;
 
   }
 }
