@@ -373,7 +373,6 @@ Coordinate Bot::random()
 void Bot::Attack(Player * Other) //dichiara un attacco
 {
   Coordinate A;
-  int i;
   std::cout<< " target acquired: " << this->targetAcquired << "\n";
   // "target not acquired"
   if(!this->targetAcquired){
@@ -395,7 +394,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
       if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
        this->targetAcquired=true;
        this->firstStrike = A;
-       i = rand()%4;
+       this->i = rand()%4;
       }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
 
 
@@ -411,7 +410,7 @@ else
 // "target acquired"
   if(this->targetAcquired){
 
-    this->isAcquired = this->target+this->targetDirection[i];
+    this->isAcquired = this->target+this->targetDirection[this->i];
     A=this->isAcquired;
 
     int x = A.getX();
@@ -441,13 +440,13 @@ else
       {
         if(this->target==this->firstStrike){
           std::cout << "target == firstStrike" << "\n";
-          i = (i+1)%4;
+          this->i = (i+1)%4;
         }
         if(this->target!=this->firstStrike){
           this->target=this->firstStrike;
           std::cout << "target != firstStrike" << "\n";
 
-          i = (i+2)%4;
+          this->i = (i+2)%4;
         }
 
       }
