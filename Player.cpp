@@ -423,7 +423,7 @@ else
 
     if (!_Screen.getRadar(x,y))
     {
-      std::cout << "Quadrante già colpito" << '\n';
+      std::cout << "Quadrante già colpito in " << x << " " << y << '\n';
 
       if(this->target==this->firstStrike){
         std::cout << "target == firstStrike" << "\n";
