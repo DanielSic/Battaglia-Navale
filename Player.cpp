@@ -393,6 +393,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
       if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
        this->targetAcquired=true;
        this->firstStrike = A;
+       int i = rand()%4;
       }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
 
 
@@ -402,8 +403,8 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 }
 
   if(this->targetAcquired){
-    A = random();
-    this->target = A;
+    this->isAcquired = this->target+this->targetDirection[i];
+    A=this->isAcquired;
 
     int x = A.getX();
     int y = A.getY();
@@ -417,12 +418,27 @@ void Bot::Attack(Player * Other) //dichiara un attacco
     else
 
     {
-      _Screen.setRadar(x,y,Other->_Plancia[y][x]);
-
-      if(Other->Sunk(x,y))
+      if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
+       this->target = this->isAcquired;
+       if(Other->Sunk(x,y))
+       {
+         this->targetAcquired=false;
+       };
+      }
+      else
       {
-        this->targetAcquired=false;
-      };
+        if(this->target==this->fistStrike){
+          i =(i+1)%4;
+        }
+        if(this->target!=this->fistStrike){
+          this->target=this->fistStrike;
+          i=(i+2)%4;
+        }
+
+      }
+
+
+
   }
 
     //Spostiamo Other._Plancia.setRadar in Hit()?

@@ -20,9 +20,6 @@ bool Game::Generate() //genera il nome dei giocatori e le loro plancie
   _player2.random().print();
   _player2.random().print();
   _player2.random().print();
-  _player2.random().print();
-  _player2.random().print();
-  _player2.random().print();
   std::string nome;
   std::cout << "Giocatore 1 inserisci il tuo nome... " << '\n';
   std::cin >> nome;
