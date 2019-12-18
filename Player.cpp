@@ -14,7 +14,7 @@
 //---------------------------------------------------------------Comuni a player
 Player::Player()
 {
-  srand(time(NULL));
+  //srand(time(NULL));
   _Plancia.createFlotta();
   _Plancia.createRadar();
   _Screen.createRadar();
@@ -366,8 +366,8 @@ void Bot::Print() //stampa lo schermo di un giocatore
 Coordinate Bot::random()
 {
 
-  int x = rand()%10;
-  int y = rand()%10;
+  int x = dist(mt);
+  int y = dist(mt);
   Coordinate coord = Coordinate(x,y);
 
   return coord;
@@ -380,7 +380,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
   std::cout<< " target acquired: " << this->targetAcquired << "\n";
   // "target not acquired"
   if(!this->targetAcquired){
-    srand(time(NULL));
+    //srand(time(NULL));
     A = random();
     this->target = A;
 
@@ -399,7 +399,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
       if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
        this->targetAcquired=true;
        this->firstStrike = A;
-       this->i = rand()%4;
+       this->i = dist(mt)%4;
       }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
 
 
