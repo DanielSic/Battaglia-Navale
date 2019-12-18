@@ -424,11 +424,27 @@ else
     if (!_Screen.getRadar(x,y))
     {
       std::cout << "Quadrante già colpito" << '\n';
-      this->target=this->firstStrike;
-      std::cout << "i= " << i << " A: " << "\n";
-      A.print();
-      std::cout<< "\n";
-      this->i = (i+2)%4;
+
+      if(this->target==this->firstStrike){
+        std::cout << "target == firstStrike" << "\n";
+        std::cout << "i= " << i << " A: " << "\n";
+        this->i = (i+1)%4;
+        std::cout << "i= " << i << " A: " << "\n";
+        A.print();
+        std::cout<< "\n";
+      }
+
+      if(this->target!=this->firstStrike){
+        this->target=this->firstStrike;
+        this->i = (i+2)%4;
+        std::cout << "target != firstStrike" << "\n";
+        std::cout << "i= " << i << " A: " << "\n";
+        A.print();
+        std::cout<< "\n";
+
+      }
+
+      //this->target=this->firstStrike;
       Attack(Other);
     }
 
