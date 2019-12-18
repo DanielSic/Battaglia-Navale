@@ -375,6 +375,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
   Coordinate A;
   int i;
 
+  // "target not acquired"
   if(!this->targetAcquired){
     A = random();
     this->target = A;
@@ -398,11 +399,13 @@ void Bot::Attack(Player * Other) //dichiara un attacco
       }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
 
 
+      Other->_Plancia.setRadar(x,y);
       Other->Sunk(x,y);
 
   }
 }
 
+// "target acquired"
   if(this->targetAcquired){
     this->isAcquired = this->target+this->targetDirection[i];
     A=this->isAcquired;
@@ -421,6 +424,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
     {
       if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
        this->target = this->isAcquired;
+       colpi_a_segno++;
        if(Other->Sunk(x,y))
        {
          this->targetAcquired=false;
@@ -438,15 +442,14 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 
       }
 
+      Other->_Plancia.setRadar(x,y);
 
 
   }
 
     //Spostiamo Other._Plancia.setRadar in Hit()?
-    Other->_Plancia.setRadar(x,y);
-
-    colpi_a_segno++;
     colpi_sparati++;
+
   }
 }
 
