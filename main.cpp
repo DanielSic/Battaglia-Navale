@@ -94,5 +94,5 @@ int main()
     for(int i=0; i<nNavi; i++) player2[i].Hit(x,y);
     }
   }*/
-  return 0;
+  //return 0;
 }
