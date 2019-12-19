@@ -8,9 +8,9 @@
 #include <random>
 
   std::random_device rd;
-  std::mt19937 mt1(rd());
-  std::mt19937 mt2(rd());
+  std::mt19937 mt(rd());
   std::uniform_int_distribution<int> dist(0,9);
+  std::uniform_int_distribution<int> i_dist(0,3);
 
 //---------------------------------------------------------------Comuni a player
 Player::Player()
@@ -400,7 +400,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
       if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
        this->targetAcquired=true;
        this->firstStrike = A;
-       this->i = dist(mt)%4;
+       this->i = i_dist(mt);
       }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
 
 
