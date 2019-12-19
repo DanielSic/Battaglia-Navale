@@ -285,7 +285,7 @@ Nave Bot::setShips(int len, Coordinate coord){ //crea e pone le navi
       return setShips(len,A);
     }
 
-    int direzione = i_dist();
+    int direzione = i_dist(mt);
 
     if (direzione == 0 && u)
     {
@@ -312,18 +312,19 @@ Nave Bot::setShips(int len, Coordinate coord){ //crea e pone le navi
 
 void Bot::Mozzo(int i, int lunghezza) //chiede le coordinate delle navi da creare
 {
-  Coordinate A = random()
+  Coordinate A = random();
   if(true)
   {
 
     _navi[i] = setShips(lunghezza, A);
     Print();
 
-  }else
-  {
-    std::cout << "Qualcosa è andato storto in Mozzo!" << '\n';
-
   }
+  // else
+  // {
+  //   std::cout << "Qualcosa è andato storto in Mozzo!" << '\n';
+  //
+  // }
 
 }
 
