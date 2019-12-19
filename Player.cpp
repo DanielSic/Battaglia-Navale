@@ -8,7 +8,8 @@
 #include <random>
 
   std::random_device rd;
-  std::mt19937 mt(rd());
+  std::mt19937 mt1(rd());
+  std::mt19937 mt2(rd());
   std::uniform_int_distribution<int> dist(0,9);
 
 //---------------------------------------------------------------Comuni a player
