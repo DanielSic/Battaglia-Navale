@@ -397,6 +397,7 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 
     {
       if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
+       colpi_sparati++
        this->targetAcquired=true;
        this->firstStrike = A;
        this->i = dist(mt)%4;
@@ -458,6 +459,7 @@ else
 
        this->target = this->isAcquired;
        colpi_a_segno++;
+
        if(Other->Sunk(x,y))
        {
          this->targetAcquired=false;
