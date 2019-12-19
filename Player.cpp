@@ -397,18 +397,18 @@ void Bot::Attack(Player * Other) //dichiara un attacco
 
     {
       if(_Screen.setRadar(x,y,Other->_Plancia[y][x])){
-       colpi_sparati++;
        this->targetAcquired=true;
        this->firstStrike = A;
        this->i = dist(mt)%4;
       }; //Possibilità di fare overload di setradar per non prendere necessariamente flotta
 
 
+      colpi_sparati++;
       Other->_Plancia.setRadar(x,y);
       Other->Sunk(x,y);
 
+    }
   }
-}
 
 else
 
@@ -458,6 +458,7 @@ else
         std::cout << "screen setRadar" << "\n";
 
        this->target = this->isAcquired;
+
        colpi_a_segno++;
 
        if(Other->Sunk(x,y))
