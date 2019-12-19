@@ -153,8 +153,8 @@ Nave Human::setShips(int len, Coordinate coord){ //crea e pone le navi
 
 void Human::Mozzo(int i, int lunghezza) //chiede le coordinate delle navi da creare
 {
-  Coordinate A;
-  if(A.getFromPlayer())
+  Coordinate A = random();
+  if(true)
   {
     _navi[i] = setShips(lunghezza, A);
     Print();
@@ -265,8 +265,10 @@ void Bot::setName(std::string Nome)
 }
 
 Nave Bot::setShips(int len, Coordinate coord){ //crea e pone le navi
+
     int l = len - 1;
     Coordinate U,D,R,L;
+
     U = coord + Coordinate(0,-l);
     D = coord + Coordinate(0,+l);
     R = coord + Coordinate(+l,0);
@@ -277,80 +279,50 @@ Nave Bot::setShips(int len, Coordinate coord){ //crea e pone le navi
     bool r = Check(coord, R);
     bool le = Check(coord, L);
 
-    //bool le = Check(x1,y1,x1-l,y1);
-    //bool u = Check(x1,y1,x1,y1-l);
-    //bool d = Check(x1,y1,x1,y1+l);
-
     if(!u && !d && !r && !le)
     {
-      std::cout << "not valid\n Prova coordinate valide\n";
-
-      Coordinate A;
-      A.getFromPlayer();
+      Coordinate A = random();
       return setShips(len,A);
     }
-    if (u)
-    {
-      std::cout << "Premi u per mettere la nave in ";
-      U.print();
-      std::cout << "\n";
-    }
-    if (d)
-    {
-      std::cout << "Premi d per mettere la nave in ";
-      D.print();
-      std::cout << "\n";
-    }
-    if (le)
-    {
-      std::cout << "Premi l per mettere la nave in ";
-      L.print();
-      std::cout << "\n";
-    }
-    if (r)
-    {
-      std::cout << "Premi r per mettere la nave in ";
-      R.print();
-      std::cout << "\n";
-    }
-    char direzione;
-    std::cin >> direzione;
-    std::cin.ignore(10000,'\n');
-    if (direzione == 'u' && u)
+
+    int direzione = i_dist();
+
+    if (direzione == 0 && u)
     {
       _Plancia.setNave(coord, U);
       return Nave(coord, U);
     }
-    if (direzione == 'd' && d)
+    if (direzione == 1 && d)
     {
       _Plancia.setNave(coord, D);
       return Nave(coord, D);
     }
-    if (direzione == 'l' && le)
+    if (direzione == 2 && le)
     {
       _Plancia.setNave(coord, L);
       return Nave(coord, L);
     }
-    if (direzione == 'r' && r)
+    if (direzione == 3 && r)
     {
       _Plancia.setNave(coord, R);
       return Nave(coord, R);
     }
-    std::cout << "not valid \n Prova direzione valida\n";
     return setShips(len,coord);
 }
 
 void Bot::Mozzo(int i, int lunghezza) //chiede le coordinate delle navi da creare
 {
-  Coordinate A;
+  Coordinate A = random();
   if(A.getFromPlayer())
   {
+
     _navi[i] = setShips(lunghezza, A);
     Print();
 
   }else
   {
     std::cout << "Qualcosa è andato storto in Mozzo!" << '\n';
+
   }
 
 }
