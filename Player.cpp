@@ -153,8 +153,8 @@ Nave Human::setShips(int len, Coordinate coord){ //crea e pone le navi
 
 void Human::Mozzo(int i, int lunghezza) //chiede le coordinate delle navi da creare
 {
-  Coordinate A = random();
-  if(true)
+  Coordinate A;
+  if(A.getFromPlayer())
   {
     _navi[i] = setShips(lunghezza, A);
     Print();
@@ -312,8 +312,8 @@ Nave Bot::setShips(int len, Coordinate coord){ //crea e pone le navi
 
 void Bot::Mozzo(int i, int lunghezza) //chiede le coordinate delle navi da creare
 {
-  Coordinate A = random();
-  if(A.getFromPlayer())
+  Coordinate A = random()
+  if(true)
   {
 
     _navi[i] = setShips(lunghezza, A);
