@@ -15,7 +15,7 @@ public:
 
 
 private:
-  Human _player1;
+  Bot _player1;
   Bot _player2;
 
   Player *_p1 = &_player1;

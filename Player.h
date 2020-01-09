@@ -77,6 +77,8 @@ private:
   Coordinate firstStrike;
   bool targetAcquired = false;
   Coordinate targetDirection[4] = {Coordinate(0,1),Coordinate(1,0),Coordinate(0,-1),Coordinate(-1,0)};
+  int i=0;
+  int j=0;
 
 };
 
